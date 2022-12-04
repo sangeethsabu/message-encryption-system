@@ -1,0 +1,52 @@
+{% extends 'AdminHome.html' %}
+{% block content %}
+{%load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 5px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+    <script>
+        function desvalidation()
+        {
+        if(!(isNaN(document.f1.dname.value)))
+        {
+        alert("only letters are allowded");
+        document.f1.dname.value="";
+        document.f1.dname.focus();
+        return false;
+        }
+        }
+    </script>
+</head>
+<body>
+<form>
+    <table align="center" border="1">
+        <tr>
+            <th>Name</th><th>Age</th><th>Gender</th><th>House Name</th><th>Location</th><th>Pinno</th><th>Landmark</th><th>Contact No</th><th>Email Id</th><th>Image</th><th></th><th></th>
+        </tr>
+        {% for i in k %}
+        <tr>
+            <td>{{i.name}}</td><td>{{i.age}}</td><td>{{i.gender}}</td><td>{{i.hname}}</td><td>{{i.location}}</td><td>{{i.pin}}</td><td>{{i.lmark}}</td><td>{{i.cno}}</td><td>{{i.email}}</td><td><img src="/media/{{i.photo}}" width="100px" height="100px"></td><td><a href="{% url 'approve' id=i.id %}">Approve</a> </td><td><a href="{% url 'reject' id=i.id %}">Reject</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</form>
+
+
+</body>
+</html>
+{% endblock %}

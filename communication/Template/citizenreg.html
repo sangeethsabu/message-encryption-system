@@ -1,0 +1,231 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+<html>
+<head>
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Armament Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- fonts -->
+<link href="//fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+<!-- /fonts -->
+<!-- css -->
+<link href="{% static 'index-temp/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'index-temp/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'index-temp/css/aos.css' %}" rel='stylesheet prefetch' type="text/css" media="all" />
+<link href="{% static 'index-temp/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- /css -->
+<!-- js files -->
+<script src="{% static 'index-temp/js/modernizr.js' %}"></script>
+		    	    	        	    <script type="text/javascript" src="{% static 'validation.js' %}"></script>
+
+<!-- /js files -->
+</head>
+<body>
+<!-- inner banner -->
+<section class="inner-banner">
+	<!-- navigation section -->
+	<div class="navbar-wrapper">
+		<div class="container">
+			<nav class="navbar navbar-inverse navbar-static-top">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"><h1>Military Communication</h1></a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right cl-effect-20">
+						<li class="active"><a href="{% url 'index' %}"><span data-hover="Home">Home</span></a></li>
+
+						<li><a href="{% url 'service' %}"><span data-hover="Services">Services</span></a></li>
+						<li><a href="{% url 'gallery' %}"><span data-hover="Gallery">Gallery</span></a></li>
+
+						<li ><a href="{% url 'login' %}"><span data-hover="Login">Login</span></a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="search-box">
+				<div id="sb-search" class="sb-search">
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /navigation section -->
+	<div >
+		<h2 class="inner-header"></h2>
+	</div>
+</section>
+<!-- /inner banner -->
+<!--<div class="map" data-aos="flip-up">
+	<iframe class="googlemaps" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d380510.6741687111!2d-88.01234121699822!3d41.83390417061058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1455598377120" style="border:0" allowfullscreen></iframe>
+</div>-->
+<section class="contact-w3ls">
+	<div class="container">
+		<!-- Contact Details Column -->
+		<!--<div class="col-md-4 contact-wthree1" data-aos="zoom-in">
+			<h3>Contact Details</h3>
+			<p class="contact-agileits">3481 Chicken Street, Jack Ass Arena, Chicago 90210, USA.</p>
+			<p class="contact-agileits"><i class="fa fa-phone"></i> <abbr title="Phone">Phone</abbr>: (123) 456-7890</p>
+			<p class="contact-agileits"><i class="fa fa-envelope-o"></i> <abbr title="Email">Email</abbr>: <a href="mailto:name@example.com">name@example.com</a></p>
+			<p class="contact-agileits"><i class="fa fa-clock-o"></i> <abbr title="Hours">Hours</abbr>: Monday - Friday: 9:00 AM to 5:00 PM</p>
+		</div>-->
+		<div class="col-md-8 contact-wthree2" data-aos="zoom-in">
+			<div class="col-xs-12">
+				<h3></h3>
+			</div>
+			<form action="{% url 'citizenreg' %}" method="post" name="f2" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="control-group form-group">
+						<div class="controls">
+							<label>Name</label>
+							<input type="text" class="form-control"   name="name" required onchange="return fn_allLetter(document.f2.name);">
+						</div>
+					</div>
+    <div class="control-group form-group">
+						<div class="controls">
+							<label>Gender</label>
+                            <input type="radio" value="male" name="gen" ><label>Male</label>
+                            <input type="radio" value="female" name="gen" ><label>Female</label>
+
+						</div>
+					</div>
+            <div class="control-group form-group">
+						<div class="controls">
+							<label>Age</label>
+                            <input type="text" name="age" class="form-control" required onchange="return fn_checknumber(document.f2.age);">
+
+						</div>
+					</div>
+            <div class="control-group form-group">
+						<div class="controls">
+							<label>House Name</label>
+							<input type="text" class="form-control"   name="hname" required onchange="return fn_allLetter(document.f2.hname);">
+						</div>
+					</div>
+    <div class="control-group form-group">
+						<div class="controls">
+							<label>Location</label>
+							<input type="text" class="form-control"   name="location" required onchange="return fn_allLetter(document.f2.location);">
+						</div>
+					</div>
+<div class="control-group form-group">
+						<div class="controls">
+							<label>Pin No</label>
+							<input type="text" class="form-control"   name="pin" required onchange="return fn_checkpin(document.f2.pin);">
+						</div>
+					</div>
+    <div class="control-group form-group">
+						<div class="controls">
+							<label>Landmark</label>
+							<input type="text" class="form-control"   name="lmark" required onchange="return fn_allLetter(document.f2.lmark);">
+						</div>
+					</div>
+         <div class="control-group form-group">
+						<div class="controls">
+							<label>Photo</label>
+							<input type="file" class="form-control"   name="photo" required>
+						</div>
+					</div>
+    <div class="control-group form-group">
+						<div class="controls">
+							<label>Contact No</label>
+							<input type="text" class="form-control"   name="cno" required onchange="return fn_checkmobile(document.f2.cno);">
+						</div>
+					</div>
+    <div class="control-group form-group">
+						<div class="controls">
+							<label>Email Id</label>
+							<input type="text" class="form-control"   name="email" required onchange="return fn_checkemail(document.f2.email);">
+						</div>
+					</div>
+           <div class="control-group form-group">
+						<div class="controls">
+							<label>User Name</label>
+							<input type="text" class="form-control"   name="uname" required>
+						</div>
+					</div>
+
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+					<button type="submit" class="btn btn-primary">Add</button>
+				</div>
+
+
+
+
+</form>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</section>
+<!-- footer -->
+<section class="footer-w3ls">
+	<div class="container">
+		<div class="col-lg-6 col-md-6 col-sm-6 footer-agileits-w3layouts1" data-aos="flip-right">
+
+
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6 footer-agileits-w3layouts2" data-aos="flip-left">
+
+		</div>
+		<div class="clearfix"></div>
+		<hr>
+	</div>
+</section>
+<!-- /footer -->
+<!-- back to top -->
+<a href="#0" class="cd-top">Top</a>
+<!-- /back to top -->
+<!-- js files -->
+<script src="{% static 'index-temp/js/jquery.min.js' %}"></script>
+<script src="{% static 'index-temp/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'index-temp/js/SmoothScroll.min.js' %}"></script>
+<script src="{% static 'index-temp/js/jquery.easing.min.js' %}"></script>
+<script src="{% static 'index-temp/js/grayscale.js' %}"></script>
+<!-- js for back to top -->
+<script src="{% static 'index-temp/js/top.js' %}"></script>
+<!-- /js for back to top -->
+<!-- js for inner banner -->
+<script src="{% static 'index-temp/js/bgfader.js' %}"></script>
+<script>
+var myBgFader = $('.header').bgfader([
+  '{% static 'index-temp/images/inner1.jpg' %}',
+  '{% static 'index-temp/images/inner2.jpg' %}',
+  '{% static 'index-temp/images/inner3.jpg' %}',
+  '{% static 'index-temp/images/inner4.jpg' %}',
+], {
+  'timeout': 3000,
+  'speed': 3000,
+  'opacity': 0.4
+})
+myBgFader.start()
+</script>
+<!-- /js for inner banner -->
+<!-- js for search button -->
+<script src="{% static 'index-temp/js/classie.js' %}"></script>
+<script src="{% static 'index-temp/js/uisearch.js' %}"></script>
+<script>
+	new UISearch( document.getElementById( 'sb-search' ) );
+</script>
+<!-- /js for search button -->
+<!-- js for bootstrap dropdown -->
+<script src="{% static 'index-temp/js/index.js' %}"></script>
+<!-- /js for bootstrap dropdown -->
+<script src="{% static 'index-temp/js/aos.js' %}"></script>
+<script src="{% static 'index-temp/js/index2.js' %}"></script>
+<!-- /js files -->
+</body>
+</html>

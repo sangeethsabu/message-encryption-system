@@ -1,0 +1,112 @@
+{% extends 'MajorHome.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'sample.css' %}">
+    <script type="text/javascript"  src="{% static 'jquery-3.4.1.js' %}" ></script>
+    	    	        	    <script type="text/javascript" src="{% static 'validation.js' %}"></script>
+
+    <script type="text/javascript" >
+        $(document).ready(function()
+          {
+                $('#sname1').change(function ()
+				 {
+
+                    var tech = $(this).val();
+                    alert('hii')
+                    $.ajax(
+					 {
+      type: "GET",
+      url: "../staffs",
+      data:{ q : tech},
+      dataType : "json",
+     success: function(data)
+                        {
+
+				// $('#lid').empty();
+$.each(data, function(key, val)
+{
+//alert("hi")
+
+                                var opt = $('#sid'); // here we're creating a new select option with for each subject
+                                opt.val(val.id);
+                                opt.text(val.id);
+                                $('#sid').append(opt);
+                                var opt = $('#eid'); // here we're creating a new select option with for each subject
+                                opt.val(val.email);
+                                opt.text(val.email);
+                                $('#eid').append(opt);
+                                var opt = $('#did'); // here we're creating a new select option with for each subject
+                                opt.val(val.desig);
+                                opt.text(val.desig);
+                                $('#did').append(opt);
+
+                                //here we will append these new select options to a dropdown with the id 'subjectfill'
+                            });
+                        }
+
+                    });
+
+
+
+
+                });
+
+
+
+
+
+
+            });
+
+
+
+
+ </script>
+</head>
+<body>
+{% block content %}
+<form action="{% url 'staffmsg' %}" method="post" name="f1">
+    {% csrf_token %}
+<div class="control-group form-group">
+						<div class="controls">
+							<label>Select Officer Name</label>
+                            <select class="select" name="sname" id="sname1" class="form-control">
+                                <option >--Select--</option>
+            {% for i in sname %}
+            <option value="{{ i.id }}">{{ i.name }}</option>
+            {% endfor %}
+                            </select>
+						</div>
+					</div>
+
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>Message:</label>
+							<textarea rows="10" cols="100" class="form-control" id="message" name="msg" maxlength="999" style="resize:none" onchange="return fn_allLetter(document.f1.msg);" required></textarea>
+						</div>
+					</div>
+				</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+					<button type="submit" class="btn btn-primary">Send Message</button>
+				</div>
+
+
+
+
+
+        {{ public }}
+        <br/>
+        {{ private }}
+    </table>
+</form>
+
+</body>
+</html>
+{% endblock %}

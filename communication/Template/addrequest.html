@@ -1,0 +1,90 @@
+{% extends 'CitizenHome.html' %}
+{% block content %}
+{%load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'sample.css' %}">
+
+    <script>
+        function desvalidation()
+        {
+        if(!(isNaN(document.f1.dname.value)))
+        {
+        alert("only letters are allowded");
+        document.f1.dname.value="";
+        document.f1.dname.focus();
+        return false;
+        }
+        }
+    </script>
+	<script type="text/javascript">
+        function calc()
+        {
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '/' + mm + '/' + dd;
+edate=document.f1.date.value;
+//alert(edate)
+if(today>edate)
+{
+alert('select valid date')
+edate=document.f1.date.value="";
+}
+return false
+
+        }
+    </script>
+
+	    	    	        	    <script type="text/javascript" src="{% static 'validation.js' %}"></script>
+
+</head>
+<body>
+<form action="{% url 'request' %}" method="post" name="f1">
+    {% csrf_token %}
+    <div class="control-group form-group">
+						<div class="controls">
+							<label>Request Type</label>
+							<select name="rtype" class="form-control">
+                                <option value="0">--select--</option>
+                                <option value="Protection">Protection</option>
+                                <option value="Food">Food</option>
+                                <option value="Shelter">Shelter</option>
+
+
+                            </select>
+						</div>
+					</div>
+    <div class="control-group form-group">
+						<div class="controls">
+							<label>Details</label>
+							<textarea name="details" class="form-control" required></textarea>
+
+
+						</div>
+					</div>
+            <div class="control-group form-group">
+						<div class="controls">
+							<label>Date</label>
+                            <input type="date" name="date" class="form-control" required>
+
+						</div>
+					</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+					<button type="submit" class="btn btn-primary">Add</button>
+				</div>
+
+
+
+
+</form>
+
+
+</body>
+</html>
+{% endblock %}

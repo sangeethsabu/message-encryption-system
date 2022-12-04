@@ -1,0 +1,30 @@
+{% extends 'CitizenHome.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'sample.css' %}">
+</head>
+<body>
+{% block content %}
+<form>
+    <table align="center" class="table" border="1" style="color:white;">
+<tr>
+    <th class="th">Request Type</th><th class="th">Details</th><th class="th">Date</th><th class="th">Status</th>
+
+</tr>
+
+    {% for i in k %}
+        <tr>
+            <td class="td">{{i.rtype }}</td><td class="td">{{i.details }}</td><td class="td">{{i.date }}</td><td class="td" >{{i.status}} </td>
+        </tr>
+
+        {% endfor %}
+
+
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

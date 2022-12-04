@@ -1,0 +1,40 @@
+{% extends 'OfficerHome.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link rel="stylesheet" href="{% static 'sample.css' %}">
+</head>
+<body>
+{% block content %}
+<form action="{% url 'encstaffmsg1' %}" method="post">
+    {% csrf_token %}
+
+         <div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>Encrypted Message:</label>
+							<textarea rows="10" cols="100" class="form-control" id="message" name="encmsg" maxlength="999" style="resize:none">{{enc}}</textarea>
+						</div>
+					</div>
+				</div>
+          <div class="control-group form-group">
+						<div class="controls">
+							<label>Private Key:</label>
+							<input type="text" class="form-control" id="email" name="prkey" value="{{prkey}}">
+						</div>
+					</div>
+         <div class="control-group form-group">
+						<div class="controls">
+							<label>Public Key:</label>
+							<input type="text" class="form-control" id="email" name="pbkey" value="{{pbkey}}">
+						</div>
+					</div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+					<button type="submit" class="btn btn-primary">Send Message</button>
+				</div>
+</form>
+{% endblock %}
+</body>
+</html>

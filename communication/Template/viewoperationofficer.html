@@ -1,0 +1,30 @@
+{% extends 'OfficerHome.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'sample.css' %}">
+</head>
+<body>
+{% block content %}
+<form>
+    <table align="center" class="table" border="1" style="color:white;">
+<tr>
+    <th class="th">Id</th><th class="th">Operation Name</th><th class="th">Details</th><th class="th">Date</th><th class="th">Rifle Name</th>
+<th class="th">Rifle Unit</th><th class="th">Grenades Name</th><th class="th">Grenades Unit</th><th class="th">Calibers Name</th><th class="th">Calibers Unit</th><th class="th">Launchers Name</th><th class="th">Launchers Unit</th>
+</tr>
+
+    {% for i in k %}
+        <tr>
+            <td class="td">{{i.id }}</td><td class="td">{{i.oname }}</td><td class="td">{{i.details }}</td><td class="td" >{{i.odate}} </td><td>{{i.rname}} </td> <td>{{i.rtotal}}</td><td>{{i.gname}}</td><td>{{i.gtotal}}</td><td>{{i.cname}}</td><td>{{i.ctotal}}</td><td>{{i.lname}}</td><td>{{i.ltotal}}</td>
+        </tr>
+
+        {% endfor %}
+
+
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>

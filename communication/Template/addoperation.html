@@ -1,0 +1,120 @@
+{% extends 'AdminHome.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 5px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+    <script type="text/javascript">
+        function calc()
+        {
+var today = new Date();
+
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+edate=document.f2.odate.value;
+
+if(today>edate)
+{
+alert('invalid date')
+document.f2.odate.value=""
+}
+return false
+
+        }
+    </script>
+
+    	    	        	    <script type="text/javascript" src="{% static 'validation.js' %}"></script>
+
+</head>
+<body>
+<form action="{% url 'operations' %}" method="post" name="f2" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>operation code</td>
+            <td><input type="text" name="oname" required onchange="return fn_allLetter(document.f2.oname);"></td>
+        </tr>
+        <tr>
+            <td>Details</td>
+            <td><textarea name="details" required></textarea></td>
+        </tr>
+        <tr>
+            <td>operation Date</td>
+            <td><input type="date" name="odate" required onchange="return calc()"></td>
+        </tr>
+
+
+
+        <tr>
+            <td>rifle name</td>
+            <td><select name="rname">
+                <option value="0">--select--</option>
+<option value="r1">r1</option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <td>Total units</td>
+            <td><input type="text" name="rtotal" required onchange="return fn_checknumber(document.f2.rtotal);"></td>
+        </tr>
+        <tr>
+            <td>Grenades name</td>
+            <td><select name="gname">
+                <option value="0">--select--</option>
+<option value="g1">g1</option>
+        </select></td>
+        </tr>
+        <tr>
+            <td>Total units</td>
+            <td><input type="text" name="gtotal" required onchange="return fn_checknumber(document.f2.gtotal);"></td>
+        </tr>
+        <tr>
+            <td>calibers name</td>
+            <td><select name="cname">
+<option value="0">--select--</option>
+                <option value="c1">c1</option>
+        </select></td>
+        </tr>
+        <tr>
+            <td>Total units</td>
+            <td><input type="text" name="ctotal" required onchange="return fn_checknumber(document.f2.ctotal);"></td>
+        </tr>
+        <tr>
+            <td>launchers name</td>
+            <td><select name="lname">
+<option value="0">--select--</option>
+                <option value="l1">l1</option>
+        </select></td>
+        </tr>
+        <tr>
+            <td>Total units</td>
+            <td><input type="text" name="ltotal" required onchange="return fn_checknumber(document.f2.ltotal);" ></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="ADD"></td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>
+{% endblock %}

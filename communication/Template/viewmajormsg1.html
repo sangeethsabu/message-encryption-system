@@ -1,0 +1,45 @@
+{% extends 'OfficerHome.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'sample.css' %}">
+
+</head>
+<body>
+
+{% block content %}
+<form method="post" action="{% url 'staffmsgdecrypt' %}">
+    {% csrf_token %}
+
+
+<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>Encrypted Message</label>
+							<textarea rows="10" cols="100" class="form-control" id="message" name="encmsg" maxlength="999" style="resize:none">{{msg.encmsg}}</textarea>
+						</div>
+					</div>
+				</div>
+       <div class="controls">
+							<label>Enter Private Key</label>
+							<input type="text" class="form-control" id="email" name="prkey" value="{{key}}">
+						</div>
+<input type="hidden" value="{{msg.id}}" name="id">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+					<button type="submit" class="btn btn-primary">Decrypt</button>
+				</div>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="control-group form-group">
+						<div class="controls">
+							<label>Decrypted Message:</label>
+							<textarea rows="10" cols="100" class="form-control" id="message" name="demsg" maxlength="999" style="resize:none">{{dec}}</textarea>
+						</div>
+					</div>
+				</div>
+
+</form>
+{% endblock %}
+</body>
+</html>

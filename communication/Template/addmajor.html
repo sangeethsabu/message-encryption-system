@@ -1,0 +1,124 @@
+{% extends 'AdminHome.html' %}
+{% block content %}
+{%load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 5px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+</style>
+    <script>
+        function desvalidation()
+        {
+        if(!(isNaN(document.f1.dname.value)))
+        {
+        alert("only letters are allowded");
+        document.f1.dname.value="";
+        document.f1.dname.focus();
+        return false;
+        }
+        }
+    </script>
+    	        	    <script type="text/javascript" src="{% static 'validation.js' %}"></script>
+    <script type="text/javascript">
+        function calc()
+        {
+var today = new Date();
+
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = yyyy + '-' + mm + '-' + dd;
+
+edate=document.f1.dob.value;
+
+if(today<edate)
+{
+alert('invalid date')
+document.f1.dob.value=""
+}
+return false
+
+        }
+    </script>
+
+</head>
+<body>
+<form action="{% url 'major' %}" method="post" name="f1" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table  align="center">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name" required onchange="return fn_allLetter(document.f1.name);"><br></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td><input type="radio" value="male" name="gen"><label>Male</label>
+                <input type="radio" value="female" name="gen"><label>Female</label></td>
+        </tr>
+        <tr>
+            <td>Blood Group</td>
+            <td><select name="bgrp">
+                <option value="0">--select--</option>
+                <option value="A+">A+</option>
+            <option value="B+">B+</option>
+            <option value="AB+">AB+</option></select>
+
+        <tr>
+            <td>DOB</td>
+            <td><input type="date" name="dob" required onchange="return calc()"></td>
+        </tr>
+        <tr>
+            <td>phone</td>
+            <td><input type="text" name="phone" required onchange="return fn_checkmobile(document.f1.phone);"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="email" required onchange="return fn_checkemail(document.f1.email);"></td>
+        </tr>
+
+        <tr>
+            <td>Photo</td>
+            <td><input type="file" name="photo" required ></td>
+        </tr>
+        <tr>
+            <td>Force Name</td>
+            <td><input type="text" name="force" onchange="return fn_allLetter(document.f1.force);" required></td></tr>
+
+        <tr>
+            <td>Register no</td>
+            <td><input type="text" name="regno" required  onchange="return fn_checknumber(document.f1.regno);" ></td>
+        </tr>
+        <tr>
+            <td>Exp.year</td>
+            <td><input type="text" name="exp" required onchange="return fn_checknumber(document.f1.exp);"></td>
+        </tr>
+        <tr>
+            <td>User Name</td>
+            <td><input type="text" name="uname" required ></td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add"> </td>
+        </tr>
+    </table>
+</form>
+
+
+</body>
+</html>
+{% endblock %}

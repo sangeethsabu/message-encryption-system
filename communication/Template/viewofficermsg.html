@@ -1,0 +1,29 @@
+{% extends 'MajorHome.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'sample.css' %}">
+</head>
+<body>
+{% block content %}
+<form>
+    <table align="center" class="table" border="1" style="color:white">
+<tr>
+    <th class="th">Id</th><th class="th">Message</th><th class="th">Officer Name</th><th></th>
+
+</tr>
+
+      {% for i in k %}
+        <tr>
+            <td class="td">{{i.id }}</td><td class="td"><textarea  style="color:black;">{{i.encmsg }}</textarea></td><td class="td" >{{i.name}} </td><td><a href="{% url 'viewofficermsg1' id=i.id %} ">View</a> </td>
+        </tr>
+
+{% endfor %}
+
+    </table>
+</form>
+{% endblock %}
+</body>
+</html>
